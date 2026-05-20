@@ -527,17 +527,31 @@ export default function Blindspot() {
   useMotionValue(0);
 
   return (
-    <div ref={containerRef} id="blindspot" style={{ height: "320vh", position: "relative" }}>
-      {/* Sticky panel */}
+    <div
+      ref={containerRef}
+      id="blindspot"
+      className="blindspot-container"
+      style={{
+        // Desktop default — the per-breakpoint values are set in the
+        // <style> block at the bottom of this file. 220vh gives enough
+        // scroll travel for the 4-step reveal without feeling endless.
+        height: "220vh",
+        position: "relative",
+      }}
+    >
+      {/* Sticky panel — uses dvh so URL bar changes on iOS Safari don't
+          cause jumpy sticky behaviour */}
       <div
+        className="blindspot-sticky"
         style={{
           position:       "sticky",
           top:            0,
-          height:         "100vh",
+          height:         "100dvh",
           display:        "flex",
           alignItems:     "center",
           justifyContent: "center",
           flexDirection:  "column",
+          gap:            "1rem",
           padding:        "clamp(1rem, 4vw, 2rem)",
           overflow:       "hidden",
         }}
@@ -592,8 +606,9 @@ export default function Blindspot() {
           style={{
             position:  "relative",
             width:     "min(820px, 92vw)",
-            height:    "clamp(260px, 45vh, 360px)",
-            marginTop: "2.5rem",
+            // dvh keeps the diagram proportional to the visible viewport
+            height:    "clamp(240px, 40dvh, 360px)",
+            // marginTop removed — the parent sticky panel uses `gap` now
             zIndex:    2,
           }}
         >
@@ -650,7 +665,7 @@ export default function Blindspot() {
         </div>
 
         {/* Legend */}
-        <div style={{ display: "flex", gap: "1.5rem", marginTop: "2rem", zIndex: 2 }}>
+        <div style={{ display: "flex", gap: "1.5rem", zIndex: 2 }}>
           {[
             { color: "#22c55e", label: "Healthy"  },
             { color: "#f59e0b", label: "Warning"  },
@@ -676,8 +691,25 @@ export default function Blindspot() {
           100% { stroke-dashoffset: -8; }
         }
 
-        /* On phones: hide left tier labels (no room) and shrink HUD */
+        /* Desktop default: 220vh container = ~120vh of scroll travel for the
+           4-step reveal (sticky panel takes 100vh). Increase on big screens
+           for a slower, more cinematic pace. */
+        @media (min-width: 1024px) {
+          .blindspot-container { height: 280vh; }
+        }
+
+        /* Tablet: tighten travel */
+        @media (max-width: 1023px) {
+          .blindspot-container { height: 220vh; }
+        }
+
+        /* Phone: short and snappy — only 80vh of scroll travel so users
+           don't feel like the section "never ends". Still enough for all
+           4 steps to play out smoothly. */
         @media (max-width: 720px) {
+          .blindspot-container { height: 180vh; }
+
+          /* Inside the sticky panel: hide tier labels (no room) + shrink HUD */
           .blindspot-tier-label {
             display: none !important;
           }
@@ -689,6 +721,19 @@ export default function Blindspot() {
             font-size: 0.55rem !important;
             gap: 0.25rem !important;
           }
+          /* Tighter spacing between sticky panel children */
+          .blindspot-sticky {
+            gap: 0.6rem !important;
+            padding-top: 4.5rem !important;
+            padding-bottom: 3rem !important;
+            justify-content: flex-start !important;
+          }
+        }
+
+        /* Tiny phones */
+        @media (max-width: 380px) {
+          .blindspot-container { height: 160vh; }
+          .blindspot-sticky { gap: 0.4rem !important; }
         }
       `}</style>
     </div>
