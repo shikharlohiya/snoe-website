@@ -41,7 +41,8 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 1000,
-        padding: "0 2rem",
+        // Padding shrinks on small screens
+        padding: "0 clamp(1rem, 4vw, 2rem)",
         height: 64,
         display: "flex",
         alignItems: "center",
@@ -127,6 +128,7 @@ export default function Navbar() {
       {/* CTA button */}
       <a
         href="#contact"
+        className="nav-cta"
         style={{
           padding: "0.5rem 1.2rem",
           borderRadius: 6,
@@ -137,6 +139,7 @@ export default function Navbar() {
           fontWeight: 600,
           textDecoration: "none",
           letterSpacing: "0.03em",
+          whiteSpace: "nowrap",
           transition: "background 0.2s, box-shadow 0.2s",
         }}
         onMouseEnter={(e) => {
@@ -151,10 +154,16 @@ export default function Navbar() {
         Get Access
       </a>
 
-      {/* Hide nav links on mobile */}
+      {/* Hide nav links + compact CTA on mobile */}
       <style>{`
-        @media (max-width: 640px) {
+        @media (max-width: 760px) {
           .nav-links { display: none !important; }
+        }
+        @media (max-width: 380px) {
+          .nav-cta {
+            padding: 0.4rem 0.85rem !important;
+            font-size: 0.74rem !important;
+          }
         }
       `}</style>
     </motion.header>

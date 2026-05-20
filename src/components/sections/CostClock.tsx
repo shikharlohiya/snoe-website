@@ -110,7 +110,6 @@ function LiveCostCounter() {
 // ── Animated count-up stat card ──────────────────────────────
 
 interface StatCardProps {
-  value: string;       // final display value (can include non-numeric like "%")
   numericEnd: number;  // the number to count up to
   suffix: string;      // appended after the number (e.g. "B", "%", " days")
   label: string;
@@ -119,7 +118,7 @@ interface StatCardProps {
   delay: number;
 }
 
-function StatCard({ value, numericEnd, suffix, label, description, color, delay }: StatCardProps) {
+function StatCard({ numericEnd, suffix, label, description, color, delay }: StatCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   // Trigger animation only when card scrolls into view
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -190,7 +189,6 @@ function StatCard({ value, numericEnd, suffix, label, description, color, delay 
 
 const STATS: Omit<StatCardProps, "delay">[] = [
   {
-    value:       "$184B",
     numericEnd:  184,
     suffix:      "B",
     label:       "Annual disruption cost",
@@ -198,7 +196,6 @@ const STATS: Omit<StatCardProps, "delay">[] = [
     color:       "#ef4444",
   },
   {
-    value:       "73%",
     numericEnd:  73,
     suffix:      "%",
     label:       "Have no Tier-3 visibility",
@@ -206,7 +203,6 @@ const STATS: Omit<StatCardProps, "delay">[] = [
     color:       "#f59e0b",
   },
   {
-    value:       "47",
     numericEnd:  47,
     suffix:      " days",
     label:       "Average detection lag",
@@ -214,7 +210,6 @@ const STATS: Omit<StatCardProps, "delay">[] = [
     color:       "#7c3aed",
   },
   {
-    value:       "$4B",
     numericEnd:  4,
     suffix:      "B",
     label:       "TAM for AI supply intelligence",
@@ -228,7 +223,7 @@ export default function CostClock() {
     <section
       id="cost"
       style={{
-        padding: "6rem 2rem",
+        padding: "clamp(3.5rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem)",
         position: "relative",
         borderTop: "1px solid rgba(255,255,255,0.05)",
       }}

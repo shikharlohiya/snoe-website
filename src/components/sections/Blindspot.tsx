@@ -382,6 +382,7 @@ function RiskHUD({ scrollProgress }: { scrollProgress: MotionValue<number> }) {
 
   return (
     <div
+      className="blindspot-hud"
       style={{
         position: "absolute",
         top: 16,
@@ -537,7 +538,7 @@ export default function Blindspot() {
           alignItems:     "center",
           justifyContent: "center",
           flexDirection:  "column",
-          padding:        "2rem",
+          padding:        "clamp(1rem, 4vw, 2rem)",
           overflow:       "hidden",
         }}
       >
@@ -585,12 +586,13 @@ export default function Blindspot() {
           <StepHeadline scrollProgress={scrollYProgress} />
         </div>
 
-        {/* Network diagram container */}
+        {/* Network diagram container — responsive: fixed height shrinks on small screens */}
         <div
+          className="blindspot-diagram"
           style={{
             position:  "relative",
             width:     "min(820px, 92vw)",
-            height:    360,
+            height:    "clamp(260px, 45vh, 360px)",
             marginTop: "2.5rem",
             zIndex:    2,
           }}
@@ -614,7 +616,7 @@ export default function Blindspot() {
             />
           ))}
 
-          {/* Tier labels on the left */}
+          {/* Tier labels on the left — hidden on phones (no horizontal room) */}
           {[
             { label: "YOUR PLANTS", y: "8%"  },
             { label: "TIER 1 / 2",  y: "40%" },
@@ -622,6 +624,7 @@ export default function Blindspot() {
           ].map(({ label, y }, i) => (
             <motion.div
               key={label}
+              className="blindspot-tier-label"
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 0.7, x: 0 }}
               viewport={{ once: true }}
@@ -666,11 +669,26 @@ export default function Blindspot() {
         <ProgressDots scrollProgress={springProgress} />
       </div>
 
-      {/* Local keyframes: dashed flow on hot edges */}
+      {/* Local keyframes + responsive overrides */}
       <style>{`
         @keyframes dash-flow {
           0%   { stroke-dashoffset: 0;  }
           100% { stroke-dashoffset: -8; }
+        }
+
+        /* On phones: hide left tier labels (no room) and shrink HUD */
+        @media (max-width: 720px) {
+          .blindspot-tier-label {
+            display: none !important;
+          }
+          .blindspot-hud {
+            top: 8px !important;
+            right: 8px !important;
+            padding: 0.55rem 0.7rem !important;
+            min-width: 120px !important;
+            font-size: 0.55rem !important;
+            gap: 0.25rem !important;
+          }
         }
       `}</style>
     </div>

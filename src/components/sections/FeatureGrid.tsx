@@ -84,9 +84,9 @@ function FeatureCard({
         y: -6,
         // Box shadow handled inline because Tailwind can't do dynamic colors
       }}
-      className="glass-card"
+      className="glass-card feature-card"
       style={{
-        padding: "2rem",
+        padding: "clamp(1.4rem, 4vw, 2rem)",
         display: "flex",
         flexDirection: "column",
         gap: "1rem",
@@ -186,7 +186,7 @@ export default function FeatureGrid() {
     <section
       id="features"
       style={{
-        padding: "8rem 2rem",
+        padding: "clamp(4rem, 10vw, 8rem) clamp(1rem, 4vw, 2rem)",
         borderTop: "1px solid rgba(255,255,255,0.05)",
       }}
     >
@@ -218,12 +218,14 @@ export default function FeatureGrid() {
           </motion.h2>
         </div>
 
-        {/* Cards grid — 3 columns on desktop, 2 on tablet, 1 on mobile */}
+        {/* Cards grid — 3 columns on desktop, 2 on tablet, 1 on phone */}
         <div
+          className="feature-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "1.5rem",
+            // minmax 280px lets two columns fit at ~600 px wide
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))",
+            gap: "clamp(1rem, 3vw, 1.5rem)",
           }}
         >
           {FEATURES.map((feature, i) => (

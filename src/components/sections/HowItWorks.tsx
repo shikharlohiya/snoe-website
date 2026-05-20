@@ -81,12 +81,17 @@ function PhaseCard({
   // Trigger when card enters viewport
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Alternate cards left/right for visual rhythm
+  // Alternate cards left/right for visual rhythm (desktop only).
+  // The .phase-row class is referenced by the responsive media query
+  // at the bottom of this file to flatten the layout on mobile.
   const fromLeft = index % 2 === 0;
 
   return (
     <div
       ref={ref}
+      className="phase-row"
+      // Data attr lets CSS check which side a card is on
+      data-side={fromLeft ? "left" : "right"}
       style={{
         display: "flex",
         alignItems: "flex-start",
@@ -98,10 +103,11 @@ function PhaseCard({
     >
       {/* ── Timeline node (the circle on the center line) ── */}
       <div
+        className="phase-node"
         style={{
           position: "absolute",
-          // Center the node on the timeline line
-          left: fromLeft ? "calc(50% - 20px)" : "calc(50% - 20px)",
+          // Center the node on the timeline line (desktop)
+          left: "calc(50% - 20px)",
           top: "1.5rem",
           width: 40,
           height: 40,
@@ -120,15 +126,15 @@ function PhaseCard({
         {phase.icon}
       </div>
 
-      {/* ── Half-width spacer on the opposite side ── */}
-      <div style={{ flex: 1 }} />
+      {/* ── Half-width spacer on the opposite side (hidden on mobile) ── */}
+      <div className="phase-spacer" style={{ flex: 1 }} />
 
       {/* ── Card ── */}
       <motion.div
         initial={{ opacity: 0, x: fromLeft ? -50 : 50 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="glass-card"
+        className="glass-card phase-card"
         style={{
           flex: 1,
           padding: "2rem",
@@ -277,7 +283,7 @@ export default function HowItWorks() {
     <section
       id="how-it-works"
       style={{
-        padding: "8rem 2rem",
+        padding: "clamp(4rem, 10vw, 8rem) clamp(1rem, 4vw, 2rem)",
         maxWidth: 1100,
         margin: "0 auto",
         position: "relative",
@@ -327,7 +333,7 @@ export default function HowItWorks() {
       </div>
 
       {/* Timeline container */}
-      <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "5rem" }}>
+      <div className="phase-timeline" style={{ position: "relative", display: "flex", flexDirection: "column", gap: "5rem" }}>
         {/* The animated line running down the center */}
         <TimelineLine />
 
@@ -336,6 +342,48 @@ export default function HowItWorks() {
           <PhaseCard key={phase.id} phase={phase} index={i} />
         ))}
       </div>
+
+      {/* Responsive overrides — single-column layout on mobile.
+          Desktop:   center timeline line, cards alternate left/right.
+          Mobile:    timeline pinned to the left, all cards stack on the right. */}
+      <style>{`
+        @media (max-width: 760px) {
+          /* Move the central timeline line to the left edge */
+          .phase-timeline > svg {
+            left: 20px !important;
+            transform: none !important;
+          }
+          /* All rows behave the same — single row, card on the right */
+          .phase-row {
+            flex-direction: row !important;
+            gap: 1rem !important;
+            padding-left: 0 !important;
+          }
+          /* Node sits on the left timeline, not the centre */
+          .phase-node {
+            left: 0 !important;
+            top: 0.5rem !important;
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 1rem !important;
+          }
+          /* Remove the half-width spacer that's only useful on desktop */
+          .phase-spacer {
+            display: none !important;
+          }
+          /* Card takes remaining width, indented past the timeline node */
+          .phase-card {
+            margin-left: 52px !important;
+            max-width: 100% !important;
+            padding: 1.5rem !important;
+          }
+        }
+        @media (max-width: 760px) {
+          .phase-timeline {
+            gap: 2.5rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

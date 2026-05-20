@@ -241,3 +241,49 @@ body {
   --font-sans:        var(--font-geist-sans);
   --font-mono:        var(--font-geist-mono);
 }
+
+/* ============================================================
+   MOBILE / RESPONSIVE BASE RULES
+   - Prevent any horizontal overflow (most common mobile bug)
+   - Smaller text/padding by default on phones, scaled by media queries
+   - 16px html base font on phones so iOS doesn't auto-zoom on input focus
+   ============================================================ */
+
+html, body {
+  /* Critical: stops any rogue child element creating horizontal scroll */
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Force ALL images/SVGs/canvases to never exceed their parent.
+   Catches any 3D canvas or oversized SVG breaking the layout. */
+img, svg, canvas, video {
+  max-width: 100%;
+  height:    auto;
+}
+
+/* Canvas/3D contexts often have their own intrinsic sizing — keep them
+   constrained to their containers while still filling 100% height when set */
+canvas {
+  display: block;
+}
+
+/* ── Phone tier: <= 640px ─────────────────────────────── */
+@media (max-width: 640px) {
+  /* Slightly smaller scrollbar accent */
+  ::-webkit-scrollbar { width: 2px; }
+
+  /* Default body text comfort */
+  body { font-size: 15px; }
+
+  /* Section labels get a tiny bit smaller on mobile */
+  .text-label { font-size: 0.62rem; }
+
+  /* Glass cards: slightly less padding to save space */
+  .glass-card { border-radius: 10px; }
+}
+
+/* ── Tablet tier: 641–960 px ──────────────────────────── */
+@media (min-width: 641px) and (max-width: 960px) {
+  body { font-size: 16px; }
+}

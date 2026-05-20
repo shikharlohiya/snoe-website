@@ -87,7 +87,8 @@ export default function Hero() {
           width: "100%",
           maxWidth: 1280,
           margin: "0 auto",
-          padding: "6rem 2rem 4rem",
+          // Padding shrinks on small screens via media query below
+          padding: "clamp(5rem, 12vw, 6rem) clamp(1rem, 4vw, 2rem) 4rem",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "4rem",
@@ -272,9 +273,12 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+          className="hero-globe-card"
           style={{
             position: "relative",
-            height: "580px",
+            // Responsive height — uses 65vh on phones to fit, max 580 on desktop
+            height: "clamp(360px, 60vh, 580px)",
+            width: "100%",
             borderRadius: 16,
             overflow: "hidden",
             border: "1px solid rgba(0,229,255,0.08)",
@@ -372,12 +376,22 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Responsive styles for the hero grid */}
+      {/* Responsive styles — fully collapses to single column on phones */}
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 880px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .hero-grid {
+            padding-top: 5.5rem !important;
+            padding-bottom: 3rem !important;
+            gap: 1.75rem !important;
+          }
+          .hero-globe-card {
+            height: clamp(300px, 55vh, 420px) !important;
           }
         }
       `}</style>

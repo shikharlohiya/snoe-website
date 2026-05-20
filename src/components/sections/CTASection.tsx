@@ -27,7 +27,7 @@ export default function CTASection() {
       id="contact"
       style={{
         position: "relative",
-        padding: "10rem 2rem",
+        padding: "clamp(5rem, 12vw, 10rem) clamp(1rem, 4vw, 2rem)",
         overflow: "hidden",
         borderTop: "1px solid rgba(255,255,255,0.05)",
       }}
@@ -213,7 +213,7 @@ export default function CTASection() {
           </a>
         </motion.div>
 
-        {/* Trust metrics */}
+        {/* Trust metrics — wraps to multiple rows on small screens */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -221,10 +221,12 @@ export default function CTASection() {
           transition={{ delay: 0.4 }}
           style={{
             display: "flex",
-            gap: "2.5rem",
+            gap: "clamp(1.25rem, 5vw, 2.5rem)",
             flexWrap: "wrap",
+            rowGap: "1rem",
             justifyContent: "center",
-            paddingTop: "1rem",
+            paddingTop: "1.5rem",
+            marginTop: "0.5rem",
             borderTop: "1px solid rgba(255,255,255,0.06)",
             width: "100%",
           }}

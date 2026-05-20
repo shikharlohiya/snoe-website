@@ -295,7 +295,7 @@ export default function LiveDemo() {
     <section
       id="demo"
       style={{
-        padding: "8rem 2rem",
+        padding: "clamp(4rem, 10vw, 8rem) clamp(1rem, 4vw, 2rem)",
         borderTop: "1px solid rgba(255,255,255,0.05)",
       }}
     >
@@ -354,25 +354,28 @@ export default function LiveDemo() {
             <button
               key={s.id}
               onClick={() => triggerScenario(s)}
+              className="scenario-btn"
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                padding: "0.7rem 1.4rem",
+                padding: "0.7rem 1.2rem",
                 borderRadius: 8,
                 border: `1px solid ${activeScenario?.id === s.id ? s.color : "rgba(255,255,255,0.1)"}`,
                 background: activeScenario?.id === s.id ? `${s.color}15` : "rgba(255,255,255,0.03)",
                 color: activeScenario?.id === s.id ? s.color : "var(--text-secondary)",
                 fontSize: "0.88rem",
                 fontWeight: 600,
-                cursor: "none",
+                cursor: "pointer",
                 transition: "all 0.2s",
                 boxShadow: activeScenario?.id === s.id ? `0 0 20px ${s.color}30` : "none",
               }}
             >
               <span>{s.icon}</span>
               <span>{s.label}</span>
+              {/* Location text — hidden on small phones (saves space) */}
               <span
+                className="scenario-location"
                 style={{
                   fontSize: "0.68rem",
                   color: "var(--text-muted)",
@@ -387,7 +390,7 @@ export default function LiveDemo() {
 
         {/* Main demo panel */}
         <div
-          className="glass-card"
+          className="glass-card demo-panel"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -437,10 +440,27 @@ export default function LiveDemo() {
         </div>
       </div>
 
-      {/* Responsive */}
+      {/* Responsive overrides for the demo panel + buttons */}
       <style>{`
-        @media (max-width: 640px) {
-          #demo .glass-card { grid-template-columns: 1fr !important; }
+        /* Tablet+phone: stack the two demo panes vertically */
+        @media (max-width: 760px) {
+          .demo-panel {
+            grid-template-columns: 1fr !important;
+            min-height: 0 !important;
+          }
+          /* Replace the vertical divider with a horizontal one */
+          .demo-panel > div:first-child {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+          }
+        }
+        /* Small phones: hide the location text in scenario buttons */
+        @media (max-width: 480px) {
+          .scenario-location { display: none !important; }
+          .scenario-btn {
+            padding: 0.6rem 0.9rem !important;
+            font-size: 0.78rem !important;
+          }
         }
       `}</style>
     </section>
