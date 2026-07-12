@@ -6,7 +6,7 @@
 export const SITE = {
   name: "SNOE",
   fullName: "Supplier Network Optimization Engine",
-  url: "https://snoetech.com",
+  url: "https://snoe-ai.com",
   email: "snoetech@gmail.com",
   description:
     "SNOE is an agentic AI decision-intelligence platform that models multi-tier supplier ecosystems as living networks — sensing geopolitical, tariff, and logistics risk, and recommending explainable actions before disruption reaches production.",
