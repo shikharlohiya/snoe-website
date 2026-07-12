@@ -1,46 +1,61 @@
 // ============================================================
 // Root Layout — SNOE Website
-// Loads Google Fonts, sets global metadata, wraps every page.
-// Space Grotesk = headlines, Geist Mono = data/terminal text.
+// Dark enterprise-AI identity:
+//   Space Grotesk — geometric display headlines
+//   Inter         — body/UI copy
+//   IBM Plex Mono — labels, stats, tables, badges
+// Navbar + Footer mount here so every page shares the chrome.
 // ============================================================
 
 import type { Metadata } from "next";
-import { Space_Grotesk, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-// Space Grotesk — geometric display font for headlines
-// Replaces generic Inter that every competitor uses
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import MotionProvider from "@/components/ui/MotionProvider";
+import { SITE } from "@/lib/site";
+
 const spaceGrotesk = Space_Grotesk({
-  variable: "--font-sans",
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-// Geist Mono — monospace for data numbers, terminal ticker, risk scores
-const geistMono = Geist_Mono({
+const inter = Inter({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "SNOE — Supplier Network Optimization Engine",
-  description:
-    "Agentic AI platform that gives industrial manufacturers real-time multi-tier supplier intelligence, geopolitical risk awareness, and autonomous disruption response.",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: "SNOE — Supplier Network Optimization Engine",
+    template: "%s — SNOE",
+  },
+  description: SITE.description,
   keywords: [
-    "supply chain intelligence",
     "supplier network optimization",
-    "geopolitical risk",
-    "tariff analysis",
-    "agentic AI",
+    "supply chain risk management",
     "multi-tier visibility",
+    "geopolitical risk intelligence",
+    "agentic AI",
+    "decision intelligence",
   ],
   openGraph: {
-    title: "SNOE — Supplier Network Optimization Engine",
-    description:
-      "Stop reacting. Start anticipating. AI-powered supply chain intelligence for industrial manufacturers.",
     type: "website",
+    siteName: "SNOE",
+    title: "SNOE — Supplier Network Optimization Engine",
+    description: SITE.description,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "SNOE — See every tier. Act before the shock." }],
   },
 };
 
@@ -50,11 +65,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      // Attach CSS variable names so Tailwind and globals.css can reference them
-      className={`${spaceGrotesk.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden">
-        {children}
+      <body className="flex min-h-full flex-col bg-paper text-ink">
+        <MotionProvider>
+          <Navbar />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

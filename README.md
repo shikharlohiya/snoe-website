@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SNOE Website
 
-## Getting Started
+Marketing site for SNOE — the Supplier Network Optimization Engine. Built with
+Next.js 16 (App Router), Tailwind CSS v4, and Framer Motion in a "Cartographic
+Editorial" design language: paper surfaces, ink typography, signal-orange
+accent, survey-map graphics.
 
-First, run the development server:
+## Pages
+
+| Route | Content |
+| --- | --- |
+| `/` | Hero survey map, problem stats, tier blind-spot, agentic loop, capabilities |
+| `/solutions` | Architecture, 12-agent roster, interactive disruption simulations |
+| `/about` | Mission, why-now, 4-phase roadmap timeline, operating principles |
+| `/investors` | Market sizing figure, business model, targets, competitive table |
+| `/whitepaper` | Dossier contents + gated PDF download (company email required) |
+| `/contact` | Inquiry form + engagement process |
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # production build (all routes static)
+npm run lint    # eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Lead capture (required for live forms)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Both the contact form and whitepaper registration submit through
+[Web3Forms](https://web3forms.com) — submissions are emailed to the address you
+register there.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a free access key at https://web3forms.com
+2. `cp .env.local.example .env.local`
+3. Paste the key into `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`
 
-## Learn More
+Without a key the forms render fine but submissions fail with a visible error.
+The key is public by design; spam is mitigated by a honeypot field and
+Web3Forms' own filtering. The whitepaper gate is lead capture, not access
+control — the PDF is a public static asset.
 
-To learn more about Next.js, take a look at the following resources:
+## Whitepaper PDF
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Source lives in `whitepaper-src/` (plain HTML + print CSS). After editing:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run whitepaper   # regenerates public/snoe-whitepaper.pdf via headless Chrome
+```
 
-## Deploy on Vercel
+## Before launch
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Replace the placeholder domain in `src/lib/site.ts` (`SITE.url`) with the
+  real production domain — sitemap, robots, and OG URLs derive from it.

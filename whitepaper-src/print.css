@@ -1,0 +1,240 @@
+/* ============================================================
+   SNOE Whitepaper — print stylesheet (A4, headless Chrome)
+   Same Cartographic Editorial tokens as the website.
+   ============================================================ */
+
+@page {
+  size: A4;
+  margin: 18mm 16mm;
+}
+
+:root {
+  --paper: #F7F5F0;
+  --paper-raised: #FCFBF8;
+  --bone: #EFEBE2;
+  --ink: #14120E;
+  --ink-soft: #55503F;
+  --ink-faint: #8A8371;
+  --hairline: #D9D3C4;
+  --accent: #E8541E;
+  --accent-deep: #B93E11;
+  --accent-wash: #FBE9E0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.6;
+}
+
+.coord {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7.5pt;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8.5pt;
+}
+
+/* ---------- Cover ---------- */
+.cover {
+  position: relative;
+  height: 258mm; /* fills the printable A4 area */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  break-after: page;
+}
+
+.cover-rule {
+  width: 52mm;
+  height: 3px;
+  background: var(--accent);
+  margin-bottom: 10mm;
+}
+
+.cover h1 {
+  font-family: "Fraunces", serif;
+  font-size: 34pt;
+  font-weight: 550;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 6mm 0 8mm;
+}
+
+.cover-sub {
+  max-width: 120mm;
+  font-size: 11.5pt;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.cover-foot {
+  position: absolute;
+  bottom: 4mm;
+  left: 0;
+}
+
+.wordmark {
+  font-family: "Fraunces", serif;
+  font-size: 16pt;
+  font-weight: 600;
+  margin-bottom: 2mm;
+}
+
+.cover-contours {
+  position: absolute;
+  right: -60mm;
+  bottom: -40mm;
+  width: 180mm;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+/* ---------- Chapters ---------- */
+.chapter {
+  break-before: page;
+}
+
+.ch-no {
+  color: var(--accent-deep);
+  border-top: 2px solid var(--ink);
+  padding-top: 3mm;
+}
+
+h2 {
+  font-family: "Fraunces", serif;
+  font-size: 19pt;
+  font-weight: 550;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 3mm 0 5mm;
+}
+
+h3 {
+  font-family: "Fraunces", serif;
+  font-size: 12pt;
+  font-weight: 600;
+  margin: 6mm 0 2mm;
+}
+
+p {
+  margin-bottom: 3.5mm;
+  color: var(--ink-soft);
+}
+
+p strong {
+  color: var(--ink);
+}
+
+ul {
+  margin: 0 0 4mm 5mm;
+  color: var(--ink-soft);
+}
+
+li {
+  margin-bottom: 1.5mm;
+  padding-left: 1mm;
+}
+
+li::marker {
+  color: var(--accent-deep);
+}
+
+li strong {
+  color: var(--ink);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8mm;
+  break-inside: avoid;
+}
+
+.callout {
+  border: 1px solid var(--accent);
+  background: var(--accent-wash);
+  color: var(--accent-deep);
+  padding: 4mm 5mm;
+  margin: 5mm 0;
+  font-size: 10pt;
+  line-height: 1.55;
+  break-inside: avoid;
+}
+
+/* ---------- Tables ---------- */
+table.spec {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4mm 0 5mm;
+  font-size: 9pt;
+  break-inside: avoid;
+}
+
+table.spec.agents {
+  break-inside: auto; /* 12 rows won't fit one block */
+}
+
+table.spec th {
+  text-align: left;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 2px solid var(--ink);
+  padding: 2mm 3mm;
+}
+
+table.spec td {
+  vertical-align: top;
+  border-bottom: 1px solid var(--hairline);
+  padding: 2.5mm 3mm;
+  color: var(--ink-soft);
+}
+
+table.spec td:first-child,
+table.spec td strong {
+  color: var(--ink);
+}
+
+table.spec tr {
+  break-inside: avoid;
+}
+
+table.spec tr.group td {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7.5pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent-deep);
+  background: var(--bone);
+  padding: 2mm 3mm;
+}
+
+.doc-foot {
+  margin-top: 12mm;
+  border-top: 1px solid var(--hairline);
+  padding-top: 3mm;
+}
