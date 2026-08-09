@@ -150,9 +150,14 @@ export default function AgentRoster() {
                     </span>
                     <span className="text-sm leading-relaxed text-ink-soft">
                       {agent.role}
+                      {/* ML technique detail HIDDEN on the public site —
+                          Everstream and peers don't publish their algorithms.
+                          Restore by un-commenting; data still lives in the
+                          `techniques` field of each agent above.
                       <span className="mt-1 hidden font-mono text-[0.6875rem] uppercase tracking-wider text-ink-faint sm:block">
                         {agent.techniques}
                       </span>
+                      */}
                     </span>
                   </li>
                 ))}

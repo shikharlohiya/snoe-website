@@ -22,7 +22,8 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Solutions", href: "/solutions" },
   { label: "About", href: "/about" },
   { label: "Whitepaper", href: "/whitepaper" },
-  { label: "Investors", href: "/investors" },
+  // Investors — hidden from the public site (kept in _investors/).
+  // { label: "Investors", href: "/investors" },
 ];
 
 export const FOOTER_LINKS = {
@@ -30,7 +31,7 @@ export const FOOTER_LINKS = {
     { label: "Home", href: "/" },
     { label: "Solutions", href: "/solutions" },
     { label: "About", href: "/about" },
-    { label: "Investors", href: "/investors" },
+    // { label: "Investors", href: "/investors" },
   ],
   resources: [
     { label: "Whitepaper", href: "/whitepaper" },

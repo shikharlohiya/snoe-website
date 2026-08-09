@@ -8,7 +8,8 @@ import HairlineCard from "@/components/ui/HairlineCard";
 import Stamp from "@/components/ui/Stamp";
 import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/ui/CtaBand";
-import RoadmapTimeline from "@/components/graphics/RoadmapTimeline";
+// HIDDEN on the public site — see the commented roadmap section below.
+// import RoadmapTimeline from "@/components/graphics/RoadmapTimeline";
 
 export const metadata: Metadata = {
   title: "About",
@@ -99,7 +100,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Roadmap */}
+      {/* Roadmap — HIDDEN on the public site. A 0–24-month product
+          development timeline with internal targets belongs in the gated
+          investor material, not public marketing (Everstream and peers
+          show no public roadmap). Kept here, commented, so it can be
+          restored for the investor / NDA flow.
       <section className="rule-b bg-paper bg-graticule">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-32">
           <Reveal>
@@ -115,6 +120,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Operating principles */}
       <section className="rule-b bg-bone">
