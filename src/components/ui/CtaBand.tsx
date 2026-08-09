@@ -1,8 +1,9 @@
-// Shared bottom CTA band — bone field with contour lines,
-// serif headline, primary + secondary actions.
+// Shared bottom CTA band — teal-blue field (Everstream style)
+// with white headline and primary + secondary actions.
 
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
+import TealSection from "@/components/ui/TealSection";
 
 type CtaBandProps = {
   eyebrow?: string;
@@ -24,24 +25,26 @@ export default function CtaBand({
   secondaryHref = "/whitepaper",
 }: CtaBandProps) {
   return (
-    <section className="rule-t bg-bone bg-contours">
-      <div className="mx-auto max-w-6xl px-6 py-16 md:py-32">
+    <TealSection>
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-28">
         <Reveal className="max-w-2xl">
-          <p className="coord-label">{eyebrow}</p>
-          <h2 className="font-display mt-4 text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] text-ink">
+          <p className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-white/70">
+            {eyebrow}
+          </p>
+          <h2 className="font-display mt-4 text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.1] text-white">
             {title}
           </h2>
-          <p className="mt-5 max-w-[58ch] text-[1.0625rem] leading-[1.65] text-ink-soft">
+          <p className="mt-5 max-w-[58ch] text-[1.0625rem] leading-[1.65] text-white/85">
             {body}
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Button href={primaryHref}>{primaryLabel}</Button>
-            <Button href={secondaryHref} variant="outline">
+            <Button href={secondaryHref} variant="outlineLight">
               {secondaryLabel}
             </Button>
           </div>
         </Reveal>
       </div>
-    </section>
+    </TealSection>
   );
 }

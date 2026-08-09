@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import Reveal from "@/components/ui/Reveal";
 import HairlineCard from "@/components/ui/HairlineCard";
+import PageHeader from "@/components/ui/PageHeader";
 import ContactForm from "@/components/forms/ContactForm";
 import { SITE } from "@/lib/site";
 
@@ -22,21 +23,15 @@ const PROCESS = [
 export default function ContactPage() {
   return (
     <main>
-      <section className="bg-paper bg-graticule">
-        <div className="mx-auto max-w-6xl px-6 py-14 md:py-28">
-          <Reveal>
-            <p className="coord-label">Transmission — Contact</p>
-            <h1 className="font-display mt-5 max-w-[18ch] text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.08] text-ink">
-              Open a channel.
-            </h1>
-            <p className="mt-6 max-w-[58ch] text-[1.0625rem] leading-[1.65] text-ink-soft">
-              Product briefings, pilot inquiries, partnerships, or investor
-              questions — send a message and we&apos;ll route it to the right
-              person.
-            </p>
-          </Reveal>
+      <PageHeader
+        eyebrow="Transmission — Contact"
+        title="Open a channel."
+        lede="Product briefings, pilot inquiries, partnerships, or investor questions — send a message and we’ll route it to the right person."
+      />
 
-          <div className="mt-8 md:mt-14 grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+      <section className="bg-paper">
+        <div className="mx-auto max-w-6xl px-6 py-14 md:py-20">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
             <Reveal>
               <ContactForm />
             </Reveal>

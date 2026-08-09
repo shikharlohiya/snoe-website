@@ -24,8 +24,8 @@ export default function HomePage() {
       <ProblemStrip />
       <BlindspotSection />
       <HowItWorksSection />
-      <CapabilitiesGrid />
       <QuoteBand />
+      <CapabilitiesGrid />
       <CtaBand />
     </main>
   );

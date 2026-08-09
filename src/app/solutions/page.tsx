@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import HairlineCard from "@/components/ui/HairlineCard";
+import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/ui/CtaBand";
 import ArchitectureDiagram from "@/components/graphics/ArchitectureDiagram";
 import AgentRoster from "@/components/solutions/AgentRoster";
@@ -37,21 +38,11 @@ export default function SolutionsPage() {
   return (
     <main>
       {/* Page header */}
-      <section className="rule-b bg-paper bg-graticule">
-        <div className="mx-auto max-w-6xl px-6 py-14 md:py-28">
-          <Reveal>
-            <p className="coord-label">Technical Dossier — The Platform</p>
-            <h1 className="font-display mt-5 max-w-[18ch] text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.08] text-ink">
-              One graph. Twelve agents. Governed decisions.
-            </h1>
-            <p className="mt-5 max-w-[54ch] text-[1.0625rem] leading-[1.65] text-ink-soft">
-              An intelligence overlay on your existing systems — a living graph
-              of your supplier network, staffed by autonomous agents, closing
-              the loop from shock to decision.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Technical Dossier — The Platform"
+        title="One graph. Twelve agents. Governed decisions."
+        lede="An intelligence overlay on your existing systems — a living graph of your supplier network, staffed by autonomous agents, closing the loop from shock to decision."
+      />
 
       {/* Architecture */}
       <section className="rule-b bg-bone">

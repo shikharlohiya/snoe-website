@@ -6,6 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import HairlineCard from "@/components/ui/HairlineCard";
 import Stamp from "@/components/ui/Stamp";
+import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/ui/CtaBand";
 import RoadmapTimeline from "@/components/graphics/RoadmapTimeline";
 
@@ -55,21 +56,11 @@ export default function AboutPage() {
   return (
     <main>
       {/* Mission */}
-      <section className="rule-b bg-paper bg-graticule">
-        <div className="mx-auto max-w-6xl px-6 py-14 md:py-28">
-          <Reveal>
-            <p className="coord-label">Mission Brief — About SNOE</p>
-            <h1 className="font-display mt-5 max-w-[24ch] text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.08] text-ink">
-              Supplier networks that anticipate, instead of react.
-            </h1>
-            <p className="mt-5 max-w-[54ch] text-[1.0625rem] leading-[1.65] text-ink-soft">
-              SNOE gives manufacturers faster, more resilient supplier
-              decisions — explainable AI intelligence for the people who own
-              continuity.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Mission Brief — About SNOE"
+        title="Supplier networks that anticipate, instead of react."
+        lede="SNOE gives manufacturers faster, more resilient supplier decisions — explainable AI intelligence for the people who own continuity."
+      />
 
       {/* Why now */}
       <section className="rule-b bg-bone">

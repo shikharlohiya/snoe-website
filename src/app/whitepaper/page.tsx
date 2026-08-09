@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 
 import Reveal from "@/components/ui/Reveal";
+import PageHeader from "@/components/ui/PageHeader";
 import WhitepaperGate from "@/components/forms/WhitepaperGate";
 
 export const metadata: Metadata = {
@@ -24,22 +25,15 @@ const CHAPTERS = [
 export default function WhitepaperPage() {
   return (
     <main>
-      <section className="bg-paper bg-graticule">
-        <div className="mx-auto max-w-6xl px-6 py-14 md:py-28">
-          <Reveal>
-            <p className="coord-label">Document SNOE-WP-001</p>
-            <h1 className="font-display mt-5 max-w-[22ch] text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.08] text-ink">
-              The case for network-aware supplier intelligence.
-            </h1>
-            <p className="mt-6 max-w-[60ch] text-[1.0625rem] leading-[1.65] text-ink-soft">
-              A field briefing for supply chain, operations, and finance
-              leaders: why multi-tier supplier networks fail silently, and how
-              an agentic intelligence layer turns geopolitical noise into
-              governed decisions.
-            </p>
-          </Reveal>
+      <PageHeader
+        eyebrow="Document SNOE-WP-001"
+        title="The case for network-aware supplier intelligence."
+        lede="A field briefing for supply chain, operations, and finance leaders: why multi-tier supplier networks fail silently, and how an agentic intelligence layer turns geopolitical noise into governed decisions."
+      />
 
-          <div className="mt-8 md:mt-14 grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+      <section className="bg-paper">
+        <div className="mx-auto max-w-6xl px-6 py-14 md:py-20">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
             {/* Dossier contents */}
             <Reveal>
               <div className="overflow-hidden rounded-xl border border-hairline bg-paper-raised">
