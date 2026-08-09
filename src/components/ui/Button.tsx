@@ -11,7 +11,7 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 type ButtonProps = {
   children: ReactNode;
   href?: string;
-  variant?: "solid" | "outline" | "link";
+  variant?: "solid" | "outline" | "outlineLight" | "link";
   className?: string;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className">;
 
@@ -21,9 +21,12 @@ const BASE =
 const VARIANTS = {
   // Orange fill, near-black text — the loud CTA (Everstream style)
   solid: "bg-accent px-6 py-3 text-[#1A1206] hover:bg-accent-deep hover:text-white",
-  // Teal outline, fills on hover
+  // Teal outline, fills on hover (for light surfaces)
   outline:
     "border border-cobalt px-6 py-3 text-cobalt hover:bg-cobalt hover:text-white",
+  // White outline, fills white on hover (for the teal hero band)
+  outlineLight:
+    "border border-white/70 px-6 py-3 text-white hover:bg-white hover:text-cobalt",
   link: "text-cobalt underline-offset-4 hover:underline",
 };
 
