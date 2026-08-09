@@ -39,8 +39,10 @@ export default function Navbar() {
   return (
     <header
       className={clsx(
-        "sticky top-0 z-50 border-b border-hairline transition-colors duration-300",
-        scrolled ? "bg-paper/90 backdrop-blur-md" : "bg-paper"
+        "sticky top-0 z-50 border-b transition-all duration-300",
+        scrolled
+          ? "border-hairline bg-paper/90 shadow-sm backdrop-blur-md"
+          : "border-transparent bg-paper"
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -69,14 +71,14 @@ export default function Navbar() {
               >
                 {label}
                 {active && (
-                  <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-accent" />
+                  <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-cobalt" />
                 )}
               </Link>
             );
           })}
           <Link
             href="/contact"
-            className="rounded-lg bg-accent px-4 py-2 text-[0.875rem] font-semibold text-[#12070A] transition-all hover:bg-accent-deep hover:shadow-[0_0_20px_rgba(255,107,44,0.3)]"
+            className="rounded-sm bg-cobalt px-4 py-2 text-[0.875rem] font-semibold text-white transition-colors hover:bg-[#005f88]"
           >
             Contact
           </Link>
@@ -128,7 +130,7 @@ export default function Navbar() {
                     onClick={() => setMenuOpen(false)}
                     className={clsx(
                       "font-display block border-b border-hairline py-5 text-3xl font-medium",
-                      pathname === href ? "text-accent-deep" : "text-ink"
+                      pathname === href ? "text-cobalt" : "text-ink"
                     )}
                   >
                     {label}

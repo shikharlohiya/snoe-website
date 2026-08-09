@@ -47,10 +47,13 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Survey map figure — NetworkMap renders a portrait
-          layout on phones, landscape from md up */}
-      <motion.div className="mx-auto max-w-7xl px-2 pb-10 sm:px-6 md:pb-14" {...rise(0.35)}>
-        <div className="rounded-2xl border border-hairline bg-paper-raised/50 p-2 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:p-4">
+      {/* Survey map figure — framed as a dark "product" dashboard
+          on the light page (Everstream style). `.product-frame`
+          flips the design tokens to dark for everything inside,
+          so the live map renders on navy. NetworkMap shows a
+          portrait layout on phones, landscape from md up. */}
+      <motion.div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 md:pb-16" {...rise(0.35)}>
+        <div className="product-frame overflow-hidden rounded-2xl border border-[#1A2439] p-2 shadow-[0_28px_70px_-24px_rgba(15,23,42,0.45)] sm:p-4">
           <NetworkMap />
         </div>
       </motion.div>

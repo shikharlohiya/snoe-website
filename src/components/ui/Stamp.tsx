@@ -17,7 +17,7 @@ export default function Stamp({ children, tone = "accent", className }: StampPro
         "inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em]",
         tone === "accent"
           ? "border-accent/40 bg-accent-wash text-accent-deep"
-          : "border-hairline bg-white/[0.03] text-ink-soft",
+          : "border-hairline bg-bone text-ink-soft",
         className
       )}
     >

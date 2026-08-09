@@ -1,14 +1,14 @@
 // ============================================================
 // Root Layout — SNOE Website
-// Dark enterprise-AI identity:
-//   Space Grotesk — geometric display headlines
-//   Inter         — body/UI copy
+// Light enterprise identity (Everstream palette):
+//   Raleway       — display headlines
+//   Work Sans     — body/UI copy
 //   IBM Plex Mono — labels, stats, tables, badges
 // Navbar + Footer mount here so every page shares the chrome.
 // ============================================================
 
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Raleway, Work_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
@@ -16,13 +16,14 @@ import Footer from "@/components/layout/Footer";
 import MotionProvider from "@/components/ui/MotionProvider";
 import { SITE } from "@/lib/site";
 
-const spaceGrotesk = Space_Grotesk({
+const raleway = Raleway({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
-const inter = Inter({
+const workSans = Work_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
@@ -65,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} h-full`}
+      className={`${raleway.variable} ${workSans.variable} ${plexMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <MotionProvider>

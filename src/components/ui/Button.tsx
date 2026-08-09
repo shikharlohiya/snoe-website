@@ -16,13 +16,14 @@ type ButtonProps = {
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className">;
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-lg text-[0.9375rem] font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-sm text-[0.9375rem] font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50";
 
 const VARIANTS = {
-  solid:
-    "bg-accent px-6 py-3 text-[#12070A] shadow-[0_0_24px_rgba(255,107,44,0.25)] hover:bg-accent-deep hover:shadow-[0_0_32px_rgba(255,107,44,0.35)]",
+  // Orange fill, near-black text — the loud CTA (Everstream style)
+  solid: "bg-accent px-6 py-3 text-[#1A1206] hover:bg-accent-deep hover:text-white",
+  // Teal outline, fills on hover
   outline:
-    "border border-hairline bg-white/[0.03] px-6 py-3 text-ink hover:border-ink-faint hover:bg-white/[0.06]",
+    "border border-cobalt px-6 py-3 text-cobalt hover:bg-cobalt hover:text-white",
   link: "text-cobalt underline-offset-4 hover:underline",
 };
 

@@ -2,42 +2,48 @@
 
 /* ============================================================
    SNOE — Global CSS
-   Design system: dark enterprise-AI (Interos/Everstream class).
-   Deep navy surfaces, high-contrast text, electric blue→cyan
-   gradient highlights, signal-orange CTAs, subtle grid/glow.
+   Design system: light enterprise (Everstream palette).
+   White / light-gray surfaces, dark charcoal text, teal-blue
+   brand (#0076A9), signal-orange CTA (#EA931A). Product
+   dashboards are framed dark on the light page via
+   `.product-frame` (see below).
 
-   NOTE ON NAMING: semantic token names are kept from the
-   previous theme so every component re-skins automatically —
-   "paper" = page surface, "ink" = primary text, "hairline" =
-   borders, "bone" = alternate band, "accent" = CTA orange.
+   NOTE ON NAMING: semantic token names are kept so every
+   component re-skins automatically — "paper" = page surface,
+   "ink" = primary text, "hairline" = borders, "bone" =
+   alternate band, "accent" = CTA orange, "cobalt"/"electric" =
+   teal brand, "cyan" = sky-blue secondary.
    ============================================================ */
 
-/* ---------- Design tokens ---------- */
+/* ---------- Design tokens (light) ---------- */
 :root {
-  /* Surfaces (dark navy) */
-  --paper:        #0B1220;
-  --bone:         #0E1728;
-  --paper-raised: #141F36;
+  /* Surfaces */
+  --paper:        #FFFFFF;
+  --bone:         #F4F4F4;
+  --paper-raised: #FFFFFF;
 
-  /* Text */
-  --ink:       #F2F6FC;
-  --ink-soft:  #A9B4C9;
-  --ink-faint: #66738F;
+  /* Text (charcoal) */
+  --ink:       #2E2E2E;
+  --ink-soft:  #565656;
+  --ink-faint: #767676;
 
   /* Rules & grids */
-  --hairline:       #23304D;
-  --hairline-faint: #17203A;
+  --hairline:       #E2E2E2;
+  --hairline-faint: #EDEDED;
 
-  /* Accent — signal orange (CTAs, disruption marks) */
-  --accent:      #FF6B2C;
-  --accent-deep: #FF8A55;               /* accent TEXT on dark */
-  --accent-wash: rgba(255, 107, 44, 0.12);
+  /* Accent — signal orange (CTA fill; deep = hover / text) */
+  --accent:      #EA931A;
+  --accent-deep: #B36A00;
+  --accent-wash: rgba(234, 147, 26, 0.12);
 
-  /* Electric secondary — links, gradients, chart series */
-  --cobalt:      #7EB1FF;
-  --cobalt-wash: rgba(77, 124, 254, 0.12);
-  --electric:    #4D7CFE;
-  --cyan:        #22D3EE;
+  /* Brand — teal-blue (links, primary accents, gradients) */
+  --cobalt:      #0076A9;
+  --cobalt-wash: rgba(0, 118, 169, 0.10);
+  --electric:    #0076A9;
+  --cyan:        #38A7DE;
+
+  /* Corner-glint color for crop-marks (flips in product-frame) */
+  --glint: rgba(0, 0, 0, 0.16);
 }
 
 /* ---------- Tailwind theme mapping ---------- */
@@ -61,6 +67,26 @@
   --font-display: var(--font-display);
   --font-sans:    var(--font-sans);
   --font-mono:    var(--font-mono);
+}
+
+/* ---------- Product frame: dark dashboard on the light page ----------
+   Overriding the raw tokens here cascades through every Tailwind
+   color utility used inside (bg-paper, text-ink, …) plus any SVG
+   that reads the vars — so the framed graphic renders dark while
+   the rest of the site stays light, Everstream-style. */
+.product-frame {
+  --paper:        #0B1220;
+  --bone:         #0E1728;
+  --paper-raised: #141F36;
+  --ink:          #F2F6FC;
+  --ink-soft:     #A9B4C9;
+  --ink-faint:    #7C88A1;
+  --hairline:       #24304A;
+  --hairline-faint: #1A2439;
+  --glint: rgba(255, 255, 255, 0.22);
+
+  background-color: #0B1220;
+  color: var(--ink);
 }
 
 /* ---------- Base ---------- */
@@ -89,26 +115,26 @@ img, svg, canvas, video {
 }
 
 ::selection {
-  background: rgba(77, 124, 254, 0.35);
+  background: rgba(0, 118, 169, 0.18);
   color: var(--ink);
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--paper);
+  background: var(--bone);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--hairline);
-  border-radius: 3px;
+  background: #cfcfcf;
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--ink-faint);
 }
 
 .font-display {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .font-mono {
@@ -117,41 +143,39 @@ img, svg, canvas, video {
 
 /* ---------- Custom utilities ---------- */
 
-/* Faint engineering grid on dark */
+/* Faint engineering grid (dark hairlines on light) */
 @utility bg-graticule {
   background-image:
     repeating-linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.035) 0 1px,
+      rgba(0, 0, 0, 0.035) 0 1px,
       transparent 1px 56px
     ),
     repeating-linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.035) 0 1px,
+      rgba(0, 0, 0, 0.035) 0 1px,
       transparent 1px 56px
     );
 }
 
-/* Contour lines — kept from the map identity, dark-stroke.
-   URL-encoded (# → %23) for Turbopack. */
+/* Contour lines — light-gray stroke. URL-encoded (# → %23). */
 @utility bg-contours {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600' fill='none'%3E%3Cg stroke='%2323304D' stroke-width='1'%3E%3Cpath d='M450 300c60-40 150-30 190 10s30 110-20 150-160 40-220 0-70-90-40-130 50-10 90-30z'/%3E%3Cpath d='M440 260c90-55 220-40 275 20s45 160-30 215-235 55-320 0-100-130-55-190 70-10 130-45z'/%3E%3Cpath d='M430 215c120-70 290-50 365 30s60 210-40 280-310 70-420 0-135-170-75-250 90-15 170-60z'/%3E%3Cpath d='M420 170c150-85 365-60 455 40s75 260-50 345-385 85-520 0-165-210-90-310 105-20 205-75z'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600' fill='none'%3E%3Cg stroke='%23DEDEDE' stroke-width='1'%3E%3Cpath d='M450 300c60-40 150-30 190 10s30 110-20 150-160 40-220 0-70-90-40-130 50-10 90-30z'/%3E%3Cpath d='M440 260c90-55 220-40 275 20s45 160-30 215-235 55-320 0-100-130-55-190 70-10 130-45z'/%3E%3Cpath d='M430 215c120-70 290-50 365 30s60 210-40 280-310 70-420 0-135-170-75-250 90-15 170-60z'/%3E%3Cpath d='M420 170c150-85 365-60 455 40s75 260-50 345-385 85-520 0-165-210-90-310 105-20 205-75z'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-/* Hero glow — electric radial wash behind dark heroes */
+/* Hero wash — soft teal glow, top-left */
 @utility bg-hero-glow {
   background-image:
-    radial-gradient(ellipse 55% 45% at 22% 8%, rgba(77, 124, 254, 0.22), transparent 65%),
-    radial-gradient(ellipse 45% 40% at 85% 20%, rgba(34, 211, 238, 0.12), transparent 60%),
-    radial-gradient(ellipse 60% 35% at 60% 100%, rgba(255, 107, 44, 0.07), transparent 60%);
+    radial-gradient(ellipse 55% 45% at 15% 0%, rgba(0, 118, 169, 0.08), transparent 62%),
+    radial-gradient(ellipse 45% 40% at 92% 12%, rgba(56, 167, 222, 0.07), transparent 60%);
 }
 
-/* Electric gradient text (headline highlights) */
+/* Brand gradient text (headline highlights) */
 @utility text-gradient {
-  background-image: linear-gradient(92deg, #7eb1ff 0%, #4d7cfe 45%, #22d3ee 100%);
+  background-image: linear-gradient(92deg, #0076a9 0%, #38a7de 55%, #67c6ba 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -175,7 +199,7 @@ img, svg, canvas, video {
   color: var(--ink-faint);
 }
 
-/* Corner registration marks — now a subtle glint on dark */
+/* Corner registration marks — subtle glint (adapts to surface) */
 @utility crop-marks {
   position: relative;
 
@@ -190,14 +214,14 @@ img, svg, canvas, video {
   &::before {
     top: -1px;
     left: -1px;
-    border-top: 1px solid rgba(255, 255, 255, 0.22);
-    border-left: 1px solid rgba(255, 255, 255, 0.22);
+    border-top: 1px solid var(--glint);
+    border-left: 1px solid var(--glint);
   }
   &::after {
     bottom: -1px;
     right: -1px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-    border-right: 1px solid rgba(255, 255, 255, 0.22);
+    border-bottom: 1px solid var(--glint);
+    border-right: 1px solid var(--glint);
   }
 }
 
