@@ -348,11 +348,11 @@ export default function NetworkMap() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, delay: 0.15 }}
           >
-            <rect x={500} y={52} width={260} height={52} rx={4} fill="var(--accent-wash)" stroke="var(--accent)" strokeWidth="1.5" />
-            <text x={630} y={74} textAnchor="middle" className="fill-accent-deep font-mono" fontSize="11" fontWeight="600" letterSpacing="2">
+            <rect x={500} y={52} width={260} height={52} rx={6} fill="var(--accent)" />
+            <text x={630} y={74} textAnchor="middle" fill="#1A1206" className="font-mono" fontSize="11" fontWeight="700" letterSpacing="2">
               {scenario.title}
             </text>
-            <text x={630} y={92} textAnchor="middle" className="fill-accent-deep font-mono" fontSize="9.5" letterSpacing="1.5">
+            <text x={630} y={92} textAnchor="middle" fill="#1A1206" className="font-mono" fontSize="9.5" fontWeight="500" letterSpacing="1.5" opacity="0.85">
               {scenario.sub}
             </text>
           </motion.g>
