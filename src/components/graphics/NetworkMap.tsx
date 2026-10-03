@@ -339,17 +339,16 @@ export default function NetworkMap() {
           );
         })}
 
-        {/* rotating annotation stamp */}
+        {/* annotation stamp — level (no tilt) for clean alignment */}
         <AnimatePresence mode="wait">
           <motion.g
             key={`stamp-${scenarioIdx}`}
-            transform="rotate(-2 630 78)"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, delay: 0.15 }}
           >
-            <rect x={500} y={52} width={260} height={52} fill="var(--accent-wash)" stroke="var(--accent)" strokeWidth="1.5" />
+            <rect x={500} y={52} width={260} height={52} rx={4} fill="var(--accent-wash)" stroke="var(--accent)" strokeWidth="1.5" />
             <text x={630} y={74} textAnchor="middle" className="fill-accent-deep font-mono" fontSize="11" fontWeight="600" letterSpacing="2">
               {scenario.title}
             </text>
