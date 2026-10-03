@@ -19,7 +19,7 @@ const STAGES = [
   {
     x: 570,
     title: "AGENT LAYER",
-    lines: ["4× Monitor", "4× Reasoning", "4× Action"],
+    lines: ["Monitor", "Reasoning", "Action"],
   },
   {
     x: 810,

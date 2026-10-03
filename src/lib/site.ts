@@ -21,7 +21,8 @@ export type NavItem = {
 export const NAV_ITEMS: NavItem[] = [
   { label: "Solutions", href: "/solutions" },
   { label: "About", href: "/about" },
-  { label: "Whitepaper", href: "/whitepaper" },
+  // Whitepaper — hidden from the navbar per request (page still exists).
+  // { label: "Whitepaper", href: "/whitepaper" },
   // Investors — hidden from the public site (kept in _investors/).
   // { label: "Investors", href: "/investors" },
 ];

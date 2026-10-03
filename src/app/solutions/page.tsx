@@ -9,7 +9,8 @@ import HairlineCard from "@/components/ui/HairlineCard";
 import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/ui/CtaBand";
 import ArchitectureDiagram from "@/components/graphics/ArchitectureDiagram";
-import AgentRoster from "@/components/solutions/AgentRoster";
+// Agent roster hidden per request — see commented usage below.
+// import AgentRoster from "@/components/solutions/AgentRoster";
 import ScenarioCard from "@/components/solutions/ScenarioCard";
 
 export const metadata: Metadata = {
@@ -62,8 +63,9 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* Agent roster */}
-      <AgentRoster />
+      {/* Agent roster — hidden per request. Restore by un-commenting
+          this and the AgentRoster import above. */}
+      {/* <AgentRoster /> */}
 
       {/* Scenario simulation */}
       <section className="rule-b bg-bone">

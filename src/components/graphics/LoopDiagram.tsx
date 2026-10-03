@@ -96,11 +96,8 @@ export default function LoopDiagram() {
             <text x={p.x} y={p.y + 4} textAnchor="middle" className="fill-ink font-mono" fontSize="13" fontWeight="600">
               {s.id}
             </text>
-            <text x={lx} y={ly - 4} textAnchor="middle" className="font-display fill-ink" fontSize="24" fontWeight="600">
+            <text x={lx} y={ly + 6} textAnchor="middle" className="font-display fill-ink" fontSize="22" fontWeight="600">
               {s.name}
-            </text>
-            <text x={lx} y={ly + 16} textAnchor="middle" className="fill-ink-faint font-mono" fontSize="11" letterSpacing="0.5">
-              {s.blurb}
             </text>
           </motion.g>
         );

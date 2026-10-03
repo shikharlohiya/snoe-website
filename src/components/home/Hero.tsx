@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 // Button import kept for the commented-out hero CTAs below.
 // import Button from "@/components/ui/Button";
-import NetworkMap from "@/components/graphics/NetworkMap";
+import WorldMap from "@/components/graphics/WorldMap";
 
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 16 },
@@ -76,15 +76,14 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* Live map — dark "product" dashboard straddling teal → white.
-          `.product-frame` flips the design tokens to dark for
-          everything inside. Portrait layout on phones, landscape md+. */}
+      {/* Live supplier world map — a clean light card straddling
+          teal → white (replaces the old dark dashboard box). */}
       <motion.div
-        className="relative z-10 mx-auto -mt-28 max-w-7xl px-4 pb-12 sm:px-6 md:-mt-40 md:pb-16"
+        className="relative z-10 mx-auto -mt-28 max-w-6xl px-4 pb-12 sm:px-6 md:-mt-40 md:pb-16"
         {...rise(0.35)}
       >
-        <div className="product-frame overflow-hidden rounded-2xl border border-[#1A2439] p-2 shadow-[0_40px_80px_-30px_rgba(3,58,84,0.65)] sm:p-4">
-          <NetworkMap />
+        <div className="rounded-2xl border border-hairline bg-white p-3 shadow-[0_40px_80px_-32px_rgba(3,58,84,0.45)] sm:p-6">
+          <WorldMap />
         </div>
       </motion.div>
     </>
