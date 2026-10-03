@@ -6,7 +6,8 @@
 
 import { motion } from "framer-motion";
 
-import Button from "@/components/ui/Button";
+// Button import kept for the commented-out hero CTAs below.
+// import Button from "@/components/ui/Button";
 import NetworkMap from "@/components/graphics/NetworkMap";
 
 const rise = (delay: number) => ({
@@ -64,12 +65,14 @@ export default function Hero() {
             reaches your line.
           </motion.p>
 
+          {/* Hero CTAs — hidden per request. Restore by un-commenting.
           <motion.div className="mt-9 flex flex-wrap items-center gap-4" {...rise(0.3)}>
             <Button href="/contact">Request a briefing</Button>
             <Button href="/whitepaper" variant="outlineLight">
               Read the whitepaper
             </Button>
           </motion.div>
+          */}
         </div>
       </section>
 
