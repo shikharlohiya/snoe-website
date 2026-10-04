@@ -52,11 +52,12 @@ export default function Hero() {
             </motion.p>
 
             <motion.h1
-              className="font-display mt-6 max-w-[15ch] text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[1.05] text-white"
+              className="font-display mt-6 max-w-[24ch] text-[clamp(1.9rem,3.8vw,3rem)] font-bold leading-[1.15] text-white"
               {...rise(0.1)}
             >
-              See every tier.{" "}
-              <span className="text-[#9BDCF5]">Act before the shock.</span>
+              Disruption in supplier networks is costing manufacturing{" "}
+              <span className="text-[#9BDCF5]">over $1 trillion</span> in losses
+              every year worldwide.
             </motion.h1>
 
             <motion.p
