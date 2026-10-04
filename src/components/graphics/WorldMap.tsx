@@ -117,7 +117,7 @@ export default function WorldMap() {
       viewBox={MAP_VIEWBOX}
       role="img"
       aria-label="World map of an anonymized multi-tier supplier network with a live rotating disruption"
-      className="h-auto w-full select-none"
+      className="mx-auto h-auto w-full select-none"
     >
       <defs>
         <filter id="wm-glow" x="-60%" y="-60%" width="220%" height="220%">
@@ -129,8 +129,11 @@ export default function WorldMap() {
         </filter>
       </defs>
 
+      {/* ocean / water — subtle pale sky-blue */}
+      <rect x={0} y={0} width={1000} height={500} fill="#EAF2F8" />
+
       {/* land */}
-      <path d={LAND_PATH} fill="#E4E9F0" stroke="#D2DAE4" strokeWidth={0.6} />
+      <path d={LAND_PATH} fill="#DCE3EC" stroke="#C6D0DC" strokeWidth={0.6} />
 
       {/* base arcs */}
       <g fill="none">
@@ -251,7 +254,7 @@ export default function WorldMap() {
     </svg>
 
     {/* Mobile info strip — readable caption in place of the tiny SVG chip */}
-    <div className="mt-3 rounded-lg border border-hairline bg-bone px-3 py-2.5 md:hidden">
+    <div className="mx-4 mt-3 rounded-lg border border-hairline bg-white px-3 py-2.5 md:hidden">
       <p className="flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-accent-deep">
         <span aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
         {scn.title}

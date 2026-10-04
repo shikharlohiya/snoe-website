@@ -73,7 +73,7 @@ export default function SolutionsPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Simulation Deck"
-              title="Rehearse the disruption before it happens."
+              title="Simulate disruption."
               lede="Select a scenario to watch the engine trace impact through an anonymized network and produce governed recommendations."
             />
           </Reveal>
@@ -113,10 +113,10 @@ export default function SolutionsPage() {
                 </h3>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-soft">
                   No black boxes. Each action carries a natural-language
-                  rationale, the signals that triggered it, the alternatives
-                  considered, and a full audit trail — so executives can
-                  approve with confidence and compliance can reconstruct any
-                  decision.
+                  rationale, the weighted risk signals that triggered it, the
+                  alternatives considered, and a full audit trail — so
+                  executives can approve with confidence and compliance can
+                  reconstruct any decision.
                 </p>
                 <p className="mt-4 font-mono text-[0.6875rem] uppercase tracking-wider text-ink-faint">
                   SHAP · Feature importance · Decision narratives

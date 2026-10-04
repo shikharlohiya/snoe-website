@@ -15,7 +15,8 @@ export default function QuoteBand() {
           </span>
           <blockquote className="font-display mt-8 text-[clamp(1.5rem,3.2vw,2.5rem)] font-semibold leading-[1.3] text-white">
             “Resilience in modern manufacturing depends on understanding
-            interconnected supplier networks — not managing isolated chains.”
+            interconnected supplier networks — not managing isolated supply
+            chains.”
           </blockquote>
           <p className="mt-8 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-white/70">
             SNOE Vision Statement

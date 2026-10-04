@@ -7,7 +7,8 @@ import IndustriesStrip from "@/components/home/IndustriesStrip";
 import ProblemStrip from "@/components/home/ProblemStrip";
 import BlindspotSection from "@/components/home/BlindspotSection";
 import HowItWorksSection from "@/components/home/HowItWorksSection";
-import CapabilitiesGrid from "@/components/home/CapabilitiesGrid";
+// "What the engine does." section hidden per request — see below.
+// import CapabilitiesGrid from "@/components/home/CapabilitiesGrid";
 import QuoteBand from "@/components/home/QuoteBand";
 import CtaBand from "@/components/ui/CtaBand";
 
@@ -25,7 +26,7 @@ export default function HomePage() {
       <BlindspotSection />
       <HowItWorksSection />
       <QuoteBand />
-      <CapabilitiesGrid />
+      {/* <CapabilitiesGrid /> — "What the engine does." hidden per request */}
       <CtaBand />
     </main>
   );

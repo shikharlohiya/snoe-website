@@ -1,10 +1,10 @@
 "use client";
 
 // ============================================================
-// LoopDiagram — the agentic Sense → Reason → Simulate → Act
+// LoopDiagram — the agentic Detect → Evaluate → Simulate → Act
 // loop drawn as four numbered stations on a circular survey
 // path. Arcs draw themselves in sequence on scroll; the loop
-// closes back into Sense (continuous operation).
+// closes back into Detect (continuous operation).
 // ============================================================
 
 import { motion } from "framer-motion";
@@ -14,8 +14,8 @@ const CY = 260;
 const R = 175;
 
 const STATIONS = [
-  { id: "01", name: "Sense", angle: -90, blurb: "Ingest ERP, logistics, and geopolitical signals" },
-  { id: "02", name: "Reason", angle: 0, blurb: "Propagate risk across the knowledge graph" },
+  { id: "01", name: "Detect", angle: -90, blurb: "Ingest ERP, logistics, and geopolitical signals" },
+  { id: "02", name: "Evaluate", angle: 0, blurb: "Propagate risk across the knowledge graph" },
   { id: "03", name: "Simulate", angle: 90, blurb: "Stress-test scenarios and trade-offs" },
   { id: "04", name: "Act", angle: 180, blurb: "Recommend or execute governed actions" },
 ];

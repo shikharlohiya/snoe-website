@@ -19,8 +19,8 @@ export type NavItem = {
 
 /** Primary navigation (Contact is rendered as the nav CTA button). */
 export const NAV_ITEMS: NavItem[] = [
-  { label: "Solutions", href: "/solutions" },
   { label: "About", href: "/about" },
+  { label: "Solutions", href: "/solutions" },
   // Whitepaper — hidden from the navbar per request (page still exists).
   // { label: "Whitepaper", href: "/whitepaper" },
   // Investors — hidden from the public site (kept in _investors/).

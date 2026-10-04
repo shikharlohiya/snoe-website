@@ -9,12 +9,12 @@ import LoopDiagram from "@/components/graphics/LoopDiagram";
 const STEPS = [
   {
     id: "01",
-    name: "Sense",
+    name: "Detect",
     body: "Agents ingest enterprise data and external intelligence — sanctions, tariffs, ports, weather.",
   },
   {
     id: "02",
-    name: "Reason",
+    name: "Evaluate",
     body: "Events map onto the knowledge graph, tracing impact to the exact plants at risk.",
   },
   {

@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 // Button import kept for the commented-out hero CTAs below.
 // import Button from "@/components/ui/Button";
 import WorldMap from "@/components/graphics/WorldMap";
+import NewsTicker from "@/components/home/NewsTicker";
 
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 16 },
@@ -40,52 +41,58 @@ export default function Hero() {
           }}
         />
 
-        <div className="relative mx-auto max-w-6xl px-6 pb-40 pt-16 md:pb-56 md:pt-24">
-          <motion.p
-            className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-white/70"
-            {...rise(0)}
-          >
-            Supplier Network Optimization Engine
-          </motion.p>
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 pb-16 pt-16 md:pb-24 md:pt-24 lg:grid-cols-[1.25fr_0.75fr] lg:items-start lg:gap-12">
+          {/* Left — headline */}
+          <div>
+            <motion.p
+              className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-white/70"
+              {...rise(0)}
+            >
+              Supplier Network Optimization Engine
+            </motion.p>
 
-          <motion.h1
-            className="font-display mt-6 max-w-[15ch] text-[clamp(2.75rem,6.5vw,5rem)] font-bold leading-[1.05] text-white"
-            {...rise(0.1)}
-          >
-            See every tier.{" "}
-            <span className="text-[#9BDCF5]">Act before the shock.</span>
-          </motion.h1>
+            <motion.h1
+              className="font-display mt-6 max-w-[15ch] text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[1.05] text-white"
+              {...rise(0.1)}
+            >
+              See every tier.{" "}
+              <span className="text-[#9BDCF5]">Act before the shock.</span>
+            </motion.h1>
 
-          <motion.p
-            className="mt-5 max-w-[52ch] text-[1.0625rem] leading-[1.6] text-white/85 md:mt-7 md:text-[1.125rem]"
-            {...rise(0.2)}
-          >
-            Agentic AI that senses geopolitical, tariff, and logistics risk
-            across every supplier tier — and recommends action before disruption
-            reaches your line.
-          </motion.p>
+            <motion.p
+              className="mt-5 max-w-[52ch] text-[1.0625rem] leading-[1.6] text-white/85 md:mt-7 md:text-[1.125rem]"
+              {...rise(0.2)}
+            >
+              Agentic AI that senses geopolitical, tariff, and logistics risk
+              across every supplier tier — and recommends action before
+              disruption reaches your line.
+            </motion.p>
 
-          {/* Hero CTAs — hidden per request. Restore by un-commenting.
-          <motion.div className="mt-9 flex flex-wrap items-center gap-4" {...rise(0.3)}>
-            <Button href="/contact">Request a briefing</Button>
-            <Button href="/whitepaper" variant="outlineLight">
-              Read the whitepaper
-            </Button>
+            {/* Hero CTAs — hidden per request. Restore by un-commenting.
+            <motion.div className="mt-9 flex flex-wrap items-center gap-4" {...rise(0.3)}>
+              <Button href="/contact">Request a briefing</Button>
+              <Button href="/whitepaper" variant="outlineLight">
+                Read the whitepaper
+              </Button>
+            </motion.div>
+            */}
+          </div>
+
+          {/* Right — live news ticker */}
+          <motion.div {...rise(0.35)}>
+            <NewsTicker />
           </motion.div>
-          */}
         </div>
       </section>
 
-      {/* Live supplier world map — a clean light card straddling
-          teal → white (replaces the old dark dashboard box). */}
-      <motion.div
-        className="relative z-10 mx-auto -mt-28 max-w-6xl px-4 pb-12 sm:px-6 md:-mt-40 md:pb-16"
+      {/* Full-width supplier world map — flush below the teal band
+          (no gap, no overlap), edge-to-edge like the blue box. */}
+      <motion.section
+        className="rule-b border-hairline bg-[#EAF2F8] pb-8 sm:pb-10"
         {...rise(0.35)}
       >
-        <div className="rounded-2xl border border-hairline bg-white p-3 shadow-[0_40px_80px_-32px_rgba(3,58,84,0.45)] sm:p-6">
-          <WorldMap />
-        </div>
-      </motion.div>
+        <WorldMap />
+      </motion.section>
     </>
   );
 }

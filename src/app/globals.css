@@ -271,6 +271,23 @@ img, svg, canvas, video {
   animation: marquee 36s linear infinite;
 }
 
+/* Vertical auto-scroll for the live news ticker (content duplicated
+   once, so -50% loops seamlessly). Pauses on hover. */
+@keyframes scroll-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+.animate-scroll-up {
+  animation: scroll-up var(--scroll-dur, 40s) linear infinite;
+}
+.animate-scroll-up:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
