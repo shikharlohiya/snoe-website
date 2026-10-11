@@ -52,13 +52,24 @@ export default function Hero() {
             </motion.p>
 
             <motion.h1
-              className="font-display mt-6 max-w-[24ch] text-[clamp(1.9rem,3.8vw,3rem)] font-bold leading-[1.15] text-white"
+              className="font-display mt-6 max-w-[22ch] text-[clamp(2rem,4.2vw,3.4rem)] font-bold leading-[1.12] text-white"
               {...rise(0.1)}
             >
-              Disruption in supplier networks is costing manufacturing{" "}
-              <span className="text-[#9BDCF5]">over $1 trillion</span> in losses
-              every year worldwide.
+              Disruption cost companies{" "}
+              <span className="text-[#9BDCF5]">$1.6 trillion</span> in missed
+              revenue growth.
             </motion.h1>
+
+            <motion.p className="mt-3 text-xs text-white/55" {...rise(0.15)}>
+              <a
+                href="https://www.businesswire.com/news/home/20231026182114/en/Combining-Regional-Production-and-Supply-with-Digital-Maturity-Boosts-Resiliency-Accenture-Report-Shows"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-white/30 underline-offset-2 transition-colors hover:text-white/85"
+              >
+                Source: Accenture report, 2023
+              </a>
+            </motion.p>
 
             <motion.p
               className="mt-5 max-w-[52ch] text-[1.0625rem] leading-[1.6] text-white/85 md:mt-7 md:text-[1.125rem]"
